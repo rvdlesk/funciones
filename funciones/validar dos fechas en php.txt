@@ -1,0 +1,23 @@
+  // split a la fecha
+        $orderdate = explode('/', $fecha_actual);
+        $year1  = $orderdate[0];
+        $month1 = $orderdate[1];
+        $day1   = $orderdate[2];
+        $orderdate2 = explode('/', $fecha_tope);
+        $year2  = $orderdate2[0];
+        $month2 = $orderdate2[1];
+        $day2   = $orderdate2[2];
+        //calcular el timestam
+        $timestamp1 = mktime(0,0,0,$month1,$day1,$year1);
+        $timestamp2 = mktime(0,0,0,$month2,$day2,$year2);
+        //restar fecha actual a la fecha tope
+        $segundos_diferencia = $timestamp1 - $timestamp2;
+        //convierto segundos en días
+        $dias_diferencia = $segundos_diferencia / (60 * 60 * 24);
+        //obtengo el valor absoluto de los días (quito el posible signo negativo)
+        $dias_diferencia = abs($dias_diferencia);
+        //quito los decimales a los días de diferencia
+        $dias_diferencia = floor($dias_diferencia);
+
+     if($fecha_actual >=$fecha_ini && $dias_diferencia!=0){
+        // if ($fecha_tope > $fecha_actual) {
